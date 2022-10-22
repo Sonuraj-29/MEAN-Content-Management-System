@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -13,13 +15,26 @@ export class RegisterComponent implements OnInit {
     Password : ''
   }
 
-  constructor() { }
+  constructor(
+    private http : HttpClient,
+    private router : Router
+  ) { }
 
   ngOnInit(): void {
   }
 
   registerUser(){
-    
+    this.http.post('http://localhost:3000/register', this.registerData).subscribe((data:any)=>{
+      var regStatus = data
+
+      if(regStatus.regStatus == true){
+        alert('Registered successfully')
+        this.router.navigateByUrl('login')
+      }
+      else{
+        alert('Account already exists')
+      }
+    })
   }
 
 }

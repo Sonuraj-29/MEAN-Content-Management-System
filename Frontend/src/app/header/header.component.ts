@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,10 +10,11 @@ export class HeaderComponent implements OnInit {
 
   public isMenuCollapsed = true
 
-
-  constructor() { }
+  constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
   }
+
+  
 
 }

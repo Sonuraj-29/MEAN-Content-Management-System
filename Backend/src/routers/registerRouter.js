@@ -15,7 +15,8 @@ router.post('/', (req,res)=>{
             var newUser = {
                 Name : req.body.Name,
                 Email : req.body.Email,
-                Password : req.body.Password
+                Password : req.body.Password,
+                UserRole : req.body.UserRole
             }
             var newUser = new users(newUser)
             newUser.save()

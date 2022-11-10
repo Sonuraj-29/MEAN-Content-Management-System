@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  categories : any[] = []
+
+  constructor(private http : HttpClient) { }
 
   ngOnInit(): void {
+    this.getCategory()
   }
+
+  getCategory(){
+    this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
+      this.categories = JSON.parse(JSON.stringify(categories))
+    })
+  }
+
 
 }

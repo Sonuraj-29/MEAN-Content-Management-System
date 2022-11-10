@@ -16,6 +16,8 @@ import { LoginComponent } from './login/login.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { FormsModule } from '@angular/forms';
 import { UserManagementComponent } from './user-management/user-management.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { AddCategoryComponent } from './add-category/add-category.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { UserManagementComponent } from './user-management/user-management.compo
     HomeComponent,
     LoginComponent,
     NewPostComponent,
-    UserManagementComponent
+    UserManagementComponent,
+    CategoriesComponent,
+    AddCategoryComponent
   ],
   imports: [
     BrowserModule,

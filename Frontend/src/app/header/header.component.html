@@ -6,12 +6,13 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" [ngbCollapse]="isMenuCollapsed">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" routerLink="" (click)="isMenuCollapsed = true">Home</a>
+          <a class="nav-link active" aria-current="page" routerLink="home" (click)="isMenuCollapsed = true">Home</a>
           <a class="nav-link" routerLink="login" (click)="isMenuCollapsed = true">Login</a>
           <a class="nav-link" routerLink="register" (click)="isMenuCollapsed = true">Register</a>
           <a class="nav-link" routerLink="newpost" (click)="isMenuCollapsed = true">New Post</a>
           <a class="nav-link" routerLink="myposts" (click)="isMenuCollapsed = true">My Posts</a>
           <a class="nav-link" routerLink="usermanage" (click)="isMenuCollapsed = true">User Management</a>
+          <a class="nav-link" routerLink="categories" (click)="isMenuCollapsed = true">Categories</a>
           <a class="nav-link" routerLink="logout" (click)="isMenuCollapsed = true">Logout</a>
         </div>
       </div>

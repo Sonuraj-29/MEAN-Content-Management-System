@@ -12,7 +12,8 @@ export class RegisterComponent implements OnInit {
   registerData = {
     Name : '',
     Email : '',
-    Password : ''
+    Password : '',
+    UserRole : 'User'
   }
 
   constructor(

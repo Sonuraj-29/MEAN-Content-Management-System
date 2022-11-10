@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-post',
@@ -7,9 +9,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewPostComponent implements OnInit {
 
-  constructor() { }
+  categories : any[] = []
+
+  postData = {
+    Title : '',
+    Content : '',
+    Category : '',
+    UserId : localStorage.getItem('email'),
+    Date : new Date().toLocaleString()
+  }
+
+  constructor(private http : HttpClient, private router : Router) { }
 
   ngOnInit(): void {
+    this.getCategory()
+  }
+
+  getCategory(){
+    this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
+      this.categories = JSON.parse(JSON.stringify(categories))
+    })
+  }
+
+  createPost(){
+    this.http.post('http://localhost:3000/posts', this.postData).subscribe((data:any)=>{
+      if(data.status === 'success'){
+        alert(data.message)
+        this.router.navigateByUrl('home')
+      }
+      else{
+        alert('Post not created. Try again.')
+      }
+    })
   }
 
 }

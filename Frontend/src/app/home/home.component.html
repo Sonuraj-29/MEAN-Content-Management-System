@@ -1,1 +1,9 @@
-<p>home works!</p>
+<div>
+    <ul class="nav" >
+        <li class="nav-item" *ngFor="let category of categories">
+            <a class="nav-link active" routerLink="{{category.Name}}">{{category.Name}}</a>
+        </li>
+    </ul>
+</div>
+
+  <router-outlet></router-outlet>

@@ -1,1 +1,18 @@
-<p>user-management works!</p>
+<div class="container pt-5 col-6">
+    <table class="table table-hover table-borderless table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col-3" class="d-flex justify-content-center">Admin Privilege</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = 'let user of users' class="align-middle">
+            <td>{{user.Name}}</td>
+            <td>{{user.Email}}</td>
+            <td class="d-flex justify-content-center p-3"><input type="checkbox" name="userRole" id="userRole" (change)="changeRole(user)" [checked]="user.UserRole === 'Admin' "></td>
+          </tr>
+        </tbody>
+      </table>
+</div>

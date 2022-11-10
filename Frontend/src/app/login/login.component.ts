@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       if(logData.token){
         localStorage.setItem('token', logData.token)
         localStorage.setItem('name', logData.name)
+        localStorage.setItem('email',logData.email)
         this.router.navigateByUrl('home')
 
       }

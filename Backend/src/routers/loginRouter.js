@@ -23,7 +23,8 @@ router.post('/',(req,res)=>{
                 res.send({
                     loggedIn : true,
                     token : token,
-                    name : name
+                    name : name,
+                    email : user.Email
                 })
             }
             else{

@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../posts.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-my-posts',
+  templateUrl: './my-posts.component.html',
+  styleUrls: ['./my-posts.component.css']
 })
-export class HomeComponent implements OnInit {
+export class MyPostsComponent implements OnInit {
 
   categories : any[] = []
   posts : any[] = []
@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategory()
+    this.getAllMyPosts()
   }
 
   getCategory(){
@@ -26,15 +27,14 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  getAllPosts(){
-    this.postsService.getAllPosts().subscribe((posts)=>{
+  getAllMyPosts(){
+    this.postsService.getAllMyPosts().subscribe((posts)=>{
       this.posts = JSON.parse(JSON.stringify(posts))
-
     })
   }
 
-  getPosts(category:any){
-    this.postsService.getPosts(category.Name).subscribe((posts)=>{
+  getMyPosts(category:any){
+    this.postsService.getMyPosts(category.Name).subscribe((posts)=>{
       this.posts = JSON.parse(JSON.stringify(posts))
  })
   }

@@ -7,7 +7,7 @@ const postSchema = new mongoose.Schema({
     Title : String,
     Content : String,
     Category : String,
-    userId : String,
+    UserId : String,
     Date : Date
 })
 

@@ -8,16 +8,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { LatestBlogsComponent } from './latest-blogs/latest-blogs.component';
-import { FashionBlogsComponent } from './fashion-blogs/fashion-blogs.component';
-import { TechBlogsComponent } from './tech-blogs/tech-blogs.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { FormsModule } from '@angular/forms';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { CategoriesComponent } from './categories/categories.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
+import { MyPostsComponent } from './my-posts/my-posts.component';
 
 @NgModule({
   declarations: [
@@ -25,15 +22,12 @@ import { AddCategoryComponent } from './add-category/add-category.component';
     HeaderComponent,
     RegisterComponent,
     WelcomeComponent,
-    LatestBlogsComponent,
-    FashionBlogsComponent,
-    TechBlogsComponent,
     HomeComponent,
     LoginComponent,
     NewPostComponent,
     UserManagementComponent,
     CategoriesComponent,
-    AddCategoryComponent
+    MyPostsComponent
   ],
   imports: [
     BrowserModule,

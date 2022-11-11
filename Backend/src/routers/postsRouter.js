@@ -8,7 +8,7 @@ router.post('/', (req,res)=>{
         Title : req.body.Title,
         Content : req.body.Content,
         Category : req.body.Category,
-        userId : req.body.userId,
+        UserId : req.body.UserId,
         Date : req.body.Date
     }
 
@@ -19,9 +19,28 @@ router.post('/', (req,res)=>{
                         status : 'success'})
 })
 
+router.get('/all/:user', (req,res)=>{
+    posts.find({ UserId : req.params.user}).then((posts)=>{
+        res.send(posts)
+    })
+})
+
+router.get('/:category/:user', (req,res)=>{
+    console.log(req.params)
+    posts.find({Category : req.params.category, UserId : req.params.user}).then((posts)=>{
+        res.send(posts)
+    })
+})
+
 router.get('/:category',(req,res)=>{
     console.log(req.params.category)
     posts.find({ Category : req.params.category}).then((posts)=>{
+        res.send(posts)
+    })
+})
+
+router.get('/',(req,res)=>{
+    posts.find().then((posts)=>{
         res.send(posts)
     })
 })

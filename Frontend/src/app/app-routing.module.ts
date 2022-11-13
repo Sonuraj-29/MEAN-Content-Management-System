@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { NewPostComponent } from './new-post/new-post.component';
 import { RegisterComponent } from './register/register.component';
+import { RoleGuard } from './role.guard';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
@@ -14,11 +15,11 @@ const routes: Routes = [
   { path : '', component : WelcomeComponent},
   { path : 'register', component : RegisterComponent},
   { path : 'login', component : LoginComponent},
-  { path : 'newpost', component : NewPostComponent},
+  { path : 'newpost', component : NewPostComponent, canActivate : [AuthGuard]},
   { path : 'home', component : HomeComponent, canActivate : [AuthGuard]},
-  { path : 'usermanage', component : UserManagementComponent},
-  { path : 'categories', component : CategoriesComponent},
-  { path : 'myposts', component : MyPostsComponent}
+  { path : 'usermanage', component : UserManagementComponent, canActivate : [RoleGuard], data : { role : ['Root']}},
+  { path : 'categories', component : CategoriesComponent, canActivate : [RoleGuard], data : { role : ['Root','Admin']}},
+  { path : 'myposts', component : MyPostsComponent, canActivate : [AuthGuard]}
 ];
 
 @NgModule({

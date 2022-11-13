@@ -6,14 +6,14 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" [ngbCollapse]="isMenuCollapsed">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" routerLink="home" (click)="isMenuCollapsed = true">Home</a>
-          <a class="nav-link" routerLink="login" (click)="isMenuCollapsed = true">Login</a>
-          <a class="nav-link" routerLink="register" (click)="isMenuCollapsed = true">Register</a>
-          <a class="nav-link" routerLink="newpost" (click)="isMenuCollapsed = true">New Post</a>
-          <a class="nav-link" routerLink="myposts" (click)="isMenuCollapsed = true">My Posts</a>
-          <a class="nav-link" routerLink="usermanage" (click)="isMenuCollapsed = true">User Management</a>
-          <a class="nav-link" routerLink="categories" (click)="isMenuCollapsed = true">Categories</a>
-          <a class="nav-link" routerLink="logout" (click)="isMenuCollapsed = true">Logout</a>
+          <a class="nav-link active" aria-current="page" routerLink="home" (click)="isMenuCollapsed = true" *ngIf="auth.isLoggedIn()">Home</a>
+          <a class="nav-link" routerLink="login" (click)="isMenuCollapsed = true" *ngIf="!auth.isLoggedIn()">Login</a>
+          <a class="nav-link" routerLink="register" (click)="isMenuCollapsed = true" *ngIf="!auth.isLoggedIn()">Register</a>
+          <a class="nav-link" routerLink="newpost" (click)="isMenuCollapsed = true" *ngIf="auth.isLoggedIn()">New Post</a>
+          <a class="nav-link" routerLink="myposts" (click)="isMenuCollapsed = true" *ngIf="auth.isLoggedIn()">My Posts</a>
+          <a class="nav-link" routerLink="usermanage" (click)="isMenuCollapsed = true" *ngIf="auth.getRole() === 'Root'">User Management</a>
+          <a class="nav-link" routerLink="categories" (click)="isMenuCollapsed = true" *ngIf="auth.getRole() === 'Root' || auth.getRole() === 'Admin' ">Categories</a>
+          <a class="nav-link" routerLink="logout" (click)="isMenuCollapsed = true" (click)="logoutUser()" *ngIf="auth.isLoggedIn()">Logout</a>
         </div>
       </div>
     </div>

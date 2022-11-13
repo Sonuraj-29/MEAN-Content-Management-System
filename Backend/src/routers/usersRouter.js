@@ -3,7 +3,7 @@ const router = express.Router()
 const users = require('../models/usersModel')
 
 router.get('/',(req,res)=>{
-    users.find().then((users)=>{
+    users.find({$or:[{UserRole : 'Admin'},{UserRole : 'User'}]}).then((users)=>{
         res.send(users)
     })
 })

@@ -18,13 +18,13 @@ router.post('/',(req,res)=>{
                 }
 
                 let token = jwt.sign(payload, 'secretkey')
-                let name = user.Name
 
                 res.send({
                     loggedIn : true,
                     token : token,
-                    name : name,
-                    email : user.Email
+                    name : user.Name,
+                    email : user.Email,
+                    userRole : user.UserRole
                 })
             }
             else{

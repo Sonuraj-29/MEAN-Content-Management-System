@@ -14,11 +14,16 @@
         <div class="col-12 mx-auto my-3" *ngFor="let post of posts">
             <h2 class="post-title">{{post.Title}}</h2>
             <ul class="list-inline post-meta mb-4">
-                <li class="list-inline-item"><strong>Author : </strong>{{post.Name}}</li>
+                <li class="list-inline-item"><strong>Author : </strong>{{post.Author}}</li>
                 <li class="list-inline-item"><strong>Created at : </strong> {{post.Date}}</li>
                 <li class="list-inline-item"><strong>Categories : </strong>{{post.Category}}</li>
             </ul>
             <p>{{post.Content}}</p>
+            <ul class="nav" >
+                <li class="nav-item">
+                    <button class="btn btn-danger mx-2" (click)="removePost(post)" *ngIf="auth.getRole() == 'Root' || auth.getRole() == 'Admin' ">Remove this post</button>
+                </li>
+            </ul>
         </div>
     </article>         
 </div>

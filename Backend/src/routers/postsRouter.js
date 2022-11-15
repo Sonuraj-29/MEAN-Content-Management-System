@@ -41,27 +41,25 @@ router.get('/edit/:id',(req,res)=>{
 })
 
 router.get('/all/:user', (req,res)=>{
-    posts.find({ UserId : req.params.user}).then((posts)=>{
+    posts.find({ UserId : req.params.user}).sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
 router.get('/:category/:user', (req,res)=>{
-    console.log(req.params)
-    posts.find({Category : req.params.category, UserId : req.params.user}).then((posts)=>{
+    posts.find({Category : req.params.category, UserId : req.params.user}).sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
 router.get('/:category',(req,res)=>{
-    console.log(req.params.category)
-    posts.find({ Category : req.params.category}).then((posts)=>{
+    posts.find({ Category : req.params.category}).sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
 router.get('/',(req,res)=>{
-    posts.find().then((posts)=>{
+    posts.find().sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
 import { PostsService } from '../posts.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
   posts : any[] = []
 
 
-  constructor(private http : HttpClient, private postsService : PostsService) { }
+  constructor(private http : HttpClient, private postsService : PostsService, public auth : AuthService) { }
 
   ngOnInit(): void {
     this.getCategory()
@@ -38,6 +39,13 @@ export class HomeComponent implements OnInit {
     this.postsService.getPosts(category.Name).subscribe((posts)=>{
       this.posts = JSON.parse(JSON.stringify(posts))
  })
+  }
+
+  removePost(post:any){
+    this.http.delete('http://localhost:3000/posts/'+ post._id).subscribe(()=>{
+      alert('Post deleted')
+      this.getAllPosts()
+    })
   }
 
 }

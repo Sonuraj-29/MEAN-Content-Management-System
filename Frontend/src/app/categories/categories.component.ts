@@ -42,6 +42,7 @@ export class CategoriesComponent implements OnInit {
 
   removeCategory(category:any){
     this.http.delete('http://localhost:3000/categories/'+category._id).subscribe(()=>{
+      alert('Category deleted')
       this.ngOnInit()
     })
   }

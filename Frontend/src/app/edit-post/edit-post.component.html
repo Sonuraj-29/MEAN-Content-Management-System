@@ -1,6 +1,6 @@
 <div style="height:85vh;" class="text-center d-flex justify-content-center align-items-center">
-    <form class="container col-md-4 col-lg-6" (ngSubmit)="createPost()">
-        <h2 class="mb-4">Create a new post</h2>
+    <form class="container col-md-4 col-lg-6" (ngSubmit)="updatePost()">
+        <h2 class="mb-4">Edit your post</h2>
 
         <div class="mb-3">
             <label for="category">Choose a category :</label>
@@ -21,9 +21,7 @@
         </div>
 
         <div class=" pt-3">
-            <button class="w-75 btn btn-lg btn-primary" type="submit">Create Post</button>
+            <button class="w-75 btn btn-lg btn-primary" type="submit">Update Post</button>
         </div>
     </form>
 </div>
-
-{{ postData | json }}

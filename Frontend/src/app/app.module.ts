@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { UserManagementComponent } from './user-management/user-management.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MyPostsComponent } from './my-posts/my-posts.component';
     NewPostComponent,
     UserManagementComponent,
     CategoriesComponent,
-    MyPostsComponent
+    MyPostsComponent,
+    EditPostComponent
   ],
   imports: [
     BrowserModule,

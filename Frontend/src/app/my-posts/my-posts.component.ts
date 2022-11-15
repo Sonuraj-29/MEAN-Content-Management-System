@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PostsService } from '../posts.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class MyPostsComponent implements OnInit {
   posts : any[] = []
 
 
-  constructor(private http : HttpClient, private postsService : PostsService) { }
+  constructor(private http : HttpClient, private postsService : PostsService, private router : Router) { }
 
   ngOnInit(): void {
     this.getCategory()
@@ -37,6 +38,18 @@ export class MyPostsComponent implements OnInit {
     this.postsService.getMyPosts(category.Name).subscribe((posts)=>{
       this.posts = JSON.parse(JSON.stringify(posts))
  })
+  }
+
+  deletePost(post:any){
+    this.http.delete('http://localhost:3000/posts/'+ post._id).subscribe(()=>{
+      alert('Post deleted')
+      this.getAllMyPosts()
+    })
+  }
+
+  editPost(post:any){
+    localStorage.setItem('editPostId', post._id.toString())
+    this.router.navigateByUrl('/editPost')
   }
 
 }

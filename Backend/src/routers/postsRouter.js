@@ -6,6 +6,7 @@ router.post('/', (req,res)=>{
 
     var newPost = {
         Title : req.body.Title,
+        Author : req.body.Author,
         Content : req.body.Content,
         Category : req.body.Category,
         UserId : req.body.UserId,
@@ -17,6 +18,26 @@ router.post('/', (req,res)=>{
 
     res.send({message : "New Post created successfully",
                         status : 'success'})
+})
+
+router.put('/',(req,res)=>{
+    id = req.body._id
+
+    posts.findByIdAndUpdate({'_id':id},
+                            {$set:{
+                                'Category' : req.body.Category,
+                                'Content' : req.body.Content,
+                                'Title' : req.body.Title
+                            }}).then(()=>{
+                                res.send()
+                            })
+})
+
+router.get('/edit/:id',(req,res)=>{
+    let id = req.params.id
+    posts.find({ '_id' : id }).then((post)=>{
+        res.send(post)
+    })
 })
 
 router.get('/all/:user', (req,res)=>{
@@ -42,6 +63,15 @@ router.get('/:category',(req,res)=>{
 router.get('/',(req,res)=>{
     posts.find().then((posts)=>{
         res.send(posts)
+    })
+})
+
+router.delete('/:id',(req,res)=>{
+    id = req.params.id
+
+    posts.findByIdAndDelete({'_id' : id})
+    .then(()=>{
+        res.send()
     })
 })
 

@@ -13,6 +13,7 @@ export class NewPostComponent implements OnInit {
 
   postData = {
     Title : '',
+    Author : localStorage.getItem('name'),
     Content : '',
     Category : '',
     UserId : localStorage.getItem('email'),
@@ -42,5 +43,5 @@ export class NewPostComponent implements OnInit {
       }
     })
   }
-
 }
+

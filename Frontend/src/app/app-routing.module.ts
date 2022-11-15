@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { CategoriesComponent } from './categories/categories.component';
+import { EditPostComponent } from './edit-post/edit-post.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path : 'register', component : RegisterComponent},
   { path : 'login', component : LoginComponent},
   { path : 'newpost', component : NewPostComponent, canActivate : [AuthGuard]},
+  { path : 'editPost', component : EditPostComponent, canActivate : [AuthGuard]},
   { path : 'home', component : HomeComponent, canActivate : [AuthGuard]},
   { path : 'usermanage', component : UserManagementComponent, canActivate : [RoleGuard], data : { role : ['Root']}},
   { path : 'categories', component : CategoriesComponent, canActivate : [RoleGuard], data : { role : ['Root','Admin']}},

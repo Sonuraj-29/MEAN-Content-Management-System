@@ -1,4 +1,4 @@
-<div>
+<div class="d-flex justify-content-center my-3">
     <ul class="nav" >
         <li class="nav-item">
             <button class="btn btn-dark mx-2 my-2" (click)="getAllMyPosts()">Latest</button>
@@ -9,11 +9,23 @@
     </ul>
 </div>
 
-<div class="container" *ngFor="let post of posts">
-    <div><h2>{{post.Title}}</h2></div>
-    <div><small>{{post.Category}}</small></div>
-    <div><small>{{post.Date}}</small></div>
-    <br>
-    <div>{{post.Content}}</div>
-    <br><br>
+<div class=" col-lg-8  mx-5 mb-5 mb-lg-0">
+    <article class="row mb-5">
+        <div class="col-12 mx-auto my-4" *ngFor="let post of posts">
+            <h2 class="post-title">{{post.Title}}</h2>
+            <ul class="list-inline post-meta mb-4">
+                <li class="list-inline-item"><strong>Created at : </strong>{{post.Date}}</li>
+                <li class="list-inline-item"><strong>Categories : </strong>{{post.Category}}</li>
+            </ul>
+            <p>{{post.Content}}</p>
+            <ul class="nav" >
+                <li class="nav-item">
+                    <button class="btn btn-warning mr-2 " (click)="editPost(post)">Edit this post</button>
+                </li>
+                <li class="nav-item">
+                    <button class="btn btn-danger mx-2" (click)="deletePost(post)">Delete this post</button>
+                </li>
+            </ul>
+        </div>
+    </article>         
 </div>

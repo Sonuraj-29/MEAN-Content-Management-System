@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
     this.getCategory()
     this.getAllPosts()
   }
-
+  
   getCategory(){
     this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
       this.categories = JSON.parse(JSON.stringify(categories))

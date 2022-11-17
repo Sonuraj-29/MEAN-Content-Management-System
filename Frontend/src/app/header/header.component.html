@@ -1,12 +1,12 @@
-<nav class="navbar navbar-expand-lg bg-light px-5">
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark px-5">
     <div class="container-fluid ">
-      <a class="navbar-brand" href="#">MY BLOGS</a>
+      <a class="navbar-brand">MY BLOGS</a>
       <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup" [ngbCollapse]="isMenuCollapsed">
         <div class="navbar-nav">
-          <a class="nav-link active" aria-current="page" routerLink="home" (click)="isMenuCollapsed = true" *ngIf="auth.isLoggedIn()">Home</a>
+          <a class="nav-link active" aria-current="page" routerLinkActive="active" [routerLinkActiveOptions]= '{exact : true}' routerLink="home" (click)="isMenuCollapsed = true" *ngIf="auth.isLoggedIn()">Home</a>
           <a class="nav-link" routerLink="login" (click)="isMenuCollapsed = true" *ngIf="!auth.isLoggedIn()">Login</a>
           <a class="nav-link" routerLink="register" (click)="isMenuCollapsed = true" *ngIf="!auth.isLoggedIn()">Register</a>
           <a class="nav-link" routerLink="newpost" (click)="isMenuCollapsed = true" *ngIf="auth.isLoggedIn()">New Post</a>

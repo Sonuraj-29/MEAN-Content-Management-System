@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Sending new user data to server
   registerUser(){
     this.http.post('http://localhost:3000/register', this.registerData).subscribe((data:any)=>{
       var regStatus = data
@@ -37,5 +38,4 @@ export class RegisterComponent implements OnInit {
       }
     })
   }
-
 }

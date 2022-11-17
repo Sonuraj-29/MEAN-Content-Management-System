@@ -3,6 +3,7 @@ const router = express.Router()
 const users = require('../models/usersModel')
 const jwt = require('jsonwebtoken')
 
+// Adding new user
 router.post('/',(req,res)=>{
     let Email = req.body.Email
     let Password = req.body.Password

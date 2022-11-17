@@ -26,12 +26,14 @@ export class NewPostComponent implements OnInit {
     this.getCategory()
   }
 
+  // Getting available categories from server
   getCategory(){
     this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
       this.categories = JSON.parse(JSON.stringify(categories))
     })
   }
 
+  // Sending new post to server
   createPost(){
     this.http.post('http://localhost:3000/posts', this.postData).subscribe((data:any)=>{
       if(data.status === 'success'){
@@ -44,4 +46,3 @@ export class NewPostComponent implements OnInit {
     })
   }
 }
-

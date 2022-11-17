@@ -22,6 +22,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Login User function
   loginUser(){
     this.http.post<any>('http://localhost:3000/login', this.loginData).subscribe((data)=>{
       var logData = data
@@ -32,7 +33,6 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email',logData.email)
         localStorage.setItem('userRole',logData.userRole)
         this.router.navigateByUrl('home')
-
       }
       // If login failed
       else{
@@ -41,5 +41,4 @@ export class LoginComponent implements OnInit {
       }
     })
   }
-
 }

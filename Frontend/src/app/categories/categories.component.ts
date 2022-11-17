@@ -10,6 +10,14 @@ import { Router } from '@angular/router';
 export class CategoriesComponent implements OnInit {
 
   categories : any[] = []
+
+  // For storing updated category
+  updateCatData = {
+    oldName : '',
+    Name : ''
+  }
+
+  isHidden : boolean = true
   
   constructor(private http: HttpClient, private router : Router) { }
 
@@ -17,12 +25,14 @@ export class CategoriesComponent implements OnInit {
     this.listCategory()
   }
 
+  // List all categories
   listCategory(){
     this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
       this.categories = JSON.parse(JSON.stringify(categories))
     })
   }
 
+  // Add a category
   addCategory(){
     var category = prompt('Enter new category')
 
@@ -40,11 +50,29 @@ export class CategoriesComponent implements OnInit {
     }
   }
 
+  // Make edit category dialog visible
+  showEdit(category:any){
+    this.http.get('http://localhost:3000/categories/' + category._id).subscribe((category:any)=>{
+      this.updateCatData = category
+      this.updateCatData.oldName = category.Name
+      this.isHidden = false
+    })
+  }
+
+  // Edit category function
+  editCategory(){
+    this.http.put('http://localhost:3000/categories', this.updateCatData).subscribe(()=>{
+      this.isHidden = true
+      alert('Category updated')
+      this.ngOnInit()
+    })
+  }
+
+  // Remove category function
   removeCategory(category:any){
     this.http.delete('http://localhost:3000/categories/'+category._id).subscribe(()=>{
       alert('Category deleted')
       this.ngOnInit()
     })
   }
-
 }

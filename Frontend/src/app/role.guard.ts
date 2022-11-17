@@ -16,6 +16,7 @@ export class RoleGuard implements CanActivate {
     return this.checkRole(route)
   }
 
+  // Route guard based on user role
   checkRole(route : ActivatedRouteSnapshot){
     let userRole = this.auth.getRole()
     let permission = false
@@ -26,8 +27,6 @@ export class RoleGuard implements CanActivate {
         permission = true
       }
     });
-
     return permission
   }
-  
 }

@@ -13,7 +13,6 @@ export class MyPostsComponent implements OnInit {
   categories : any[] = []
   posts : any[] = []
 
-
   constructor(private http : HttpClient, private postsService : PostsService, private router : Router) { }
 
   ngOnInit(): void {
@@ -21,25 +20,28 @@ export class MyPostsComponent implements OnInit {
     this.getAllMyPosts()
   }
 
+  // Getting available categories
   getCategory(){
     this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
       this.categories = JSON.parse(JSON.stringify(categories))
-
     })
   }
 
+  // Get all stored posts
   getAllMyPosts(){
     this.postsService.getAllMyPosts().subscribe((posts)=>{
       this.posts = JSON.parse(JSON.stringify(posts))
     })
   }
 
+  // Get posts by category
   getMyPosts(category:any){
     this.postsService.getMyPosts(category.Name).subscribe((posts)=>{
       this.posts = JSON.parse(JSON.stringify(posts))
  })
   }
 
+  // Delete a post
   deletePost(post:any){
     this.http.delete('http://localhost:3000/posts/'+ post._id).subscribe(()=>{
       alert('Post deleted')
@@ -47,9 +49,9 @@ export class MyPostsComponent implements OnInit {
     })
   }
 
+  // Edit a post
   editPost(post:any){
     localStorage.setItem('editPostId', post._id.toString())
     this.router.navigateByUrl('/editPost')
   }
-
 }

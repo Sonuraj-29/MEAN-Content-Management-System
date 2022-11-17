@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const users = require('../models/usersModel')
 
+// Change user role
 router.put('/',(req,res)=>{
     id = req.body._id
     role = req.body.UserRole

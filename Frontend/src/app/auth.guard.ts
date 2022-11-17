@@ -10,10 +10,8 @@ export class AuthGuard implements CanActivate {
 
   constructor(private auth : AuthService) {}
 
+  // Route guard based on logged in status
   canActivate(): boolean {
     return this.auth.isLoggedIn()
   }
-
-
-  
 }

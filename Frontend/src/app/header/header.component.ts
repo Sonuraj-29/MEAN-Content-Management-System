@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Logout user
   logoutUser(){
     localStorage.removeItem('token')
     localStorage.removeItem('name')
@@ -24,6 +25,4 @@ export class HeaderComponent implements OnInit {
     localStorage.removeItem('userRole')
     this.router.navigateByUrl('')
   }
-  
-
 }

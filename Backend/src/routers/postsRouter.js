@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const posts = require('../models/postsModel')
 
+// Add new post
 router.post('/', (req,res)=>{
 
     var newPost = {
@@ -20,6 +21,7 @@ router.post('/', (req,res)=>{
                         status : 'success'})
 })
 
+// Edit post
 router.put('/',(req,res)=>{
     id = req.body._id
 
@@ -33,6 +35,7 @@ router.put('/',(req,res)=>{
                             })
 })
 
+// Get a specific post
 router.get('/edit/:id',(req,res)=>{
     let id = req.params.id
     posts.find({ '_id' : id }).then((post)=>{
@@ -40,30 +43,35 @@ router.get('/edit/:id',(req,res)=>{
     })
 })
 
+// Get all posts of a user
 router.get('/all/:user', (req,res)=>{
     posts.find({ UserId : req.params.user}).sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
+// Get posts of a user by category
 router.get('/:category/:user', (req,res)=>{
     posts.find({Category : req.params.category, UserId : req.params.user}).sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
+// Get posts of a specific category
 router.get('/:category',(req,res)=>{
     posts.find({ Category : req.params.category}).sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
+// Get all posts of all users
 router.get('/',(req,res)=>{
     posts.find().sort({ Date : -1 }).then((posts)=>{
         res.send(posts)
     })
 })
 
+// Delete a post
 router.delete('/:id',(req,res)=>{
     id = req.params.id
 

@@ -11,6 +11,7 @@ export class EditPostComponent implements OnInit {
 
   categories : any[] = []
 
+  // For storing post data
   postData = {
     Title : '',
     Author : '',
@@ -24,24 +25,25 @@ export class EditPostComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCategory()
-
+    // Retrieving post details
     let postId = localStorage.getItem('editPostId')
     this.http.get('http://localhost:3000/posts/edit/' + postId).subscribe((post:any)=>{
       this.postData = JSON.parse(JSON.stringify(post[0]))
     })
   }
 
+  // For getting list of available categories
   getCategory(){
     this.http.get('http://localhost:3000/categories').subscribe((categories)=>{
       this.categories = JSON.parse(JSON.stringify(categories))
     })
   }
 
+  // Update post function
   updatePost(){
     this.http.put('http://localhost:3000/posts', this.postData).subscribe(()=>{
       alert('Post updated')
       this.router.navigateByUrl('myposts')
     })
   }
-
 }

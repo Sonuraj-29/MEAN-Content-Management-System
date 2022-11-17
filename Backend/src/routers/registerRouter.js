@@ -22,7 +22,6 @@ router.post('/', (req,res)=>{
             newUser.save()
 
             res.send({ regStatus : true })
-
         }
     })
 })

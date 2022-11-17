@@ -21,16 +21,17 @@ export class UserManagementComponent implements OnInit {
     this.getUsers()
   }
 
+  // Get details of registered users from server
   getUsers(){
     this.http.get('http://localhost:3000/users').subscribe((users)=>{
       this.users = JSON.parse(JSON.stringify(users))
     })
   }
 
+  // For changing user roles
   changeRole(user:any){
     this.http.put('http://localhost:3000/changerole', user).subscribe(()=>{
       this.ngOnInit()
     })
   }
-
 }
